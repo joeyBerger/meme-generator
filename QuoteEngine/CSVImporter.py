@@ -13,7 +13,7 @@ class CSVImporter(IngestorInterface):
         df = pandas.read_csv(path, header=0)
         quote_models = []
 
-        for index, row in df.iterrows():
+        for _, row in df.iterrows():
             quote_models.append(QuoteModel(row['body'],row['author']))
 
         return quote_models

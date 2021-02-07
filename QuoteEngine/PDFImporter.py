@@ -1,6 +1,5 @@
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
-from typing import List
 import subprocess
 import os
 import random
@@ -13,7 +12,6 @@ class PDFImporter(IngestorInterface):
         if not cls.can_ingest(path):
             raise Exception('Cannot Ingest Exception')
 
-        # tmp = f'./tmp/{random.randint(0,1000000)}.txt'
         tmp = f'./{random.randint(0,1000000)}.txt'
         subprocess.call(['pdftotext', path, tmp])
 

@@ -5,7 +5,6 @@ import argparse
 # @TODO Import your Ingestor and MemeEngine classes
 from QuoteEngine.Ingestor import Ingestor
 from MemeEngine import MemeEngine
-from testthing.testes import test_func
 
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given an path and a quote """
@@ -15,7 +14,7 @@ def generate_meme(path=None, body=None, author=None):
     if path is None:
         images = "./_data/photos/dog/"
         imgs = []
-        for root, dirs, files in os.walk(images):
+        for root, _, files in os.walk(images):
             imgs = [os.path.join(root, name) for name in files]
 
         img = random.choice(imgs)
@@ -51,4 +50,4 @@ if __name__ == "__main__":
     body = args.body
     author = args.author
 
-    print(generate_meme(args.path, args.body, args.author))
+    generate_meme(args.path, args.body, args.author)

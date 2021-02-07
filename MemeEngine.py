@@ -10,7 +10,6 @@ class MemeEngine:
         self.default_font_size = 35
         self.text_margins = (25,35)
 
-
     def make_meme(self,img_path,body,author,width=500):
         img = Image.open(img_path)
 
@@ -20,12 +19,14 @@ class MemeEngine:
 
         draw = ImageDraw.Draw(img)
         font, w, h = self.generate_suitable_font_with_dimensions(draw,width,body)
-        draw.text(((width-w)/2,self.text_margins[1]-h/2), body, font=font, fill='white')
+        draw.text(((width-w)/2,self.text_margins[1]-h/2), 
+                    body, font=font, fill='white')
 
         draw = ImageDraw.Draw(img)
         font, w, h = self.generate_suitable_font_with_dimensions(draw,width,author)
-        draw.text(((width-w)/2,height-(h/2 + self.text_margins[1])), author, font=font, fill='white')
-      
+        draw.text(((width-w)/2,height-(h/2 + self.text_margins[1])), 
+                    author, font=font, fill='white')
+                    
         try:
             shutil.rmtree(self.output_dir)
         except:
@@ -42,7 +43,6 @@ class MemeEngine:
         file_path = f"{self.output_dir}/{rand_numb}.jpg"
         img.save(file_path)
         return file_path
-
    
     def generate_suitable_font_with_dimensions(self,draw,width,message):
         font = ImageFont.truetype(self.default_font, size=35)
