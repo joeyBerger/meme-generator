@@ -2,9 +2,9 @@ import os
 import random
 import argparse
 
-# @TODO Import your Ingestor and MemeEngine classes
-from QuoteEngine.Ingestor import Ingestor
-from MemeEngine import MemeEngine
+from quote_engine.ingestor import Ingestor
+from meme_engine import MemeEngine
+from quote_engine.QuoteModel import QuoteModel
 
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given an path and a quote """
@@ -19,7 +19,7 @@ def generate_meme(path=None, body=None, author=None):
 
         img = random.choice(imgs)
     else:
-        img = path[0]
+        img = path
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
@@ -47,7 +47,5 @@ if __name__ == "__main__":
     parser.add_argument('--body', type=str)
     parser.add_argument('--author', type=str)
     args = parser.parse_args()
-    body = args.body
-    author = args.author
 
     generate_meme(args.path, args.body, args.author)

@@ -1,7 +1,7 @@
-from .DocxImporter import DocxImporter
-from .TxtImporter import TxtImporter
-from .CSVImporter import CSVImporter
-from .PDFImporter import PDFImporter
+from .docx_importer import DocxImporter
+from .txt_importer import TxtImporter
+from .cvs_importer import CSVImporter
+from .pdf_importer import PDFImporter
 
 class Ingestor():
     ingestors = [DocxImporter,TxtImporter,CSVImporter,PDFImporter]

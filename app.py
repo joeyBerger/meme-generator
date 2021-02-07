@@ -3,9 +3,9 @@ import os
 import requests
 from flask import Flask, render_template, abort, request
 
-from QuoteEngine.Ingestor import Ingestor
-from MemeEngine import MemeEngine
-from URLImageHandler import URLImageHandler
+from quote_engine.ingestor import Ingestor
+from meme_engine import MemeEngine
+from url_image_handler import URLImageHandler
 
 app = Flask(__name__)
 

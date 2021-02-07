@@ -1,4 +1,4 @@
-from .IngestorInterface import IngestorInterface
+from .ingestor_interface import IngestorInterface
 from .QuoteModel import QuoteModel
 import subprocess
 import os
