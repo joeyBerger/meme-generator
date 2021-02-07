@@ -4,6 +4,9 @@ import requests
 from flask import Flask, render_template, abort, request
 
 # @TODO Import your Ingestor and MemeEngine classes
+from QuoteEngine.Ingestor import Ingestor
+from MemeEngine import MemeEngine
+from URLImageHandler import URLImageHandler
 
 app = Flask(__name__)
 
@@ -23,11 +26,25 @@ def setup():
     quotes = None
 
     images_path = "./_data/photos/dog/"
+    imgs = []
+    for root, dirs, files in os.walk(images_path):
+        imgs = [os.path.join(root, name) for name in files]
+
+    # img = random.choice(imgs)
+
+    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
+                    './_data/DogQuotes/DogQuotesDOCX.docx',
+                    './_data/DogQuotes/DogQuotesPDF.pdf',
+                    './_data/DogQuotes/DogQuotesCSV.csv']
+    quotes = []
+    for f in quote_files:
+        quotes.extend(Ingestor.parse(f))
+
+    # quote = random.choice(quotes)
 
     # TODO: Use the pythons standard library os class to find all
     # images within the images images_path directory
-    imgs = None
-
+    # imgs = None
     return quotes, imgs
 
 
@@ -43,8 +60,8 @@ def meme_rand():
     # 1. select a random image from imgs array
     # 2. select a random quote from the quotes array
 
-    img = None
-    quote = None
+    img = random.choice(imgs)
+    quote = random.choice(quotes)
     path = meme.make_meme(img, quote.body, quote.author)
     return render_template('meme.html', path=path)
 
@@ -59,17 +76,22 @@ def meme_form():
 def meme_post():
     """ Create a user defined meme """
 
-    # @TODO:
-    # 1. Use requests to save the image from the image_url
-    #    form param to a temp local file.
-    # 2. Use the meme object to generate a meme using this temp
-    #    file and the body and author form paramaters.
-    # 3. Remove the temporary saved image.
+    body = request.form['body']
+    author = request.form['author']
+    image_url = request.form['image_url']
 
-    path = None
+    # image_url = 'https://static01.nyt.com/images/2019/06/17/science/17DOGS/17DOGS-superJumbo.jpg?quality=90&auto=webp'
+    # https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg
+
+    try:
+        img = URLImageHandler.save_file(image_url)
+        path = meme.make_meme(img, body, author)
+        URLImageHandler.remove_dir()
+    except:
+        # raise Exception('Error generating meme due to image URL')
+        return render_template('meme_form_error.html')
 
     return render_template('meme.html', path=path)
-
 
 if __name__ == "__main__":
     app.run()

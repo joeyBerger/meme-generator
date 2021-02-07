@@ -1,10 +1,9 @@
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 from typing import List
 import subprocess
 import os
 import random
-
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
 
 class PDFImporter(IngestorInterface):
     allowed_extensions = ['pdf']

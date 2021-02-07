@@ -1,5 +1,5 @@
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 
 class TxtImporter(IngestorInterface):
     allowed_extensions = ['txt']

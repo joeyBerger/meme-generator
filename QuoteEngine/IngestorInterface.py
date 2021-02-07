@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class IngestorInterface:
+class IngestorInterface(ABC):
     allowed_extensions = []
     delimiter = ' - '
 

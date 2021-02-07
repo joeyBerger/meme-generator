@@ -1,7 +1,6 @@
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 import pandas
-
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
 
 class CSVImporter(IngestorInterface):
     allowed_extensions = ['csv']

@@ -1,6 +1,5 @@
-
-from IngestorInterface import IngestorInterface
-from QuoteModel import QuoteModel
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 import docx
 
 class DocxImporter(IngestorInterface):
@@ -13,7 +12,6 @@ class DocxImporter(IngestorInterface):
         
         doc = docx.Document(path)
         quote_models = []
-
         for p in doc.paragraphs:
             if p.text != "":
                 parsed = p.text.split(cls.delimiter)
