@@ -1,6 +1,6 @@
+from utilities.file_helper import FileHelper
 from PIL import Image, ImageDraw, ImageFont
 import os
-import random
 import shutil
 
 class MemeEngine:
@@ -15,7 +15,11 @@ class MemeEngine:
         if width > 500:
             width = 500
 
-        img = Image.open(img_path)
+        try:
+            img = Image.open(img_path)
+        except Exception as e:
+            print(e)
+            return Exception()
 
         ratio = width/float(img.size[0])
         height = int(ratio*float(img.size[1]))
@@ -33,22 +37,24 @@ class MemeEngine:
                     
         try:
             shutil.rmtree(self.output_dir)
-        except:
-            print('No directory to remove.')
-            pass
+        except Exception as e:
+            print(e)
 
         try:
             os.mkdir(self.output_dir)
-        except:
-            print('Directory already exists.')
-            pass
+        except Exception as e:
+            print(e)
 
-        rand_numb = random.randint(0,1000000)
+        rand_numb = FileHelper.return_random_file_name()
         file_split = img_path.split('.')
         ext = file_split[-1]
 
         file_path = f"{self.output_dir}/{rand_numb}.{ext}"
-        img.save(file_path)
+
+        try:
+            img.save(file_path)
+        except Exception as e:
+            print(e)
         
         return file_path
    

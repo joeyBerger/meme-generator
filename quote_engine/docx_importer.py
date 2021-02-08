@@ -1,5 +1,5 @@
 from .ingestor_interface import IngestorInterface
-from .QuoteModel import QuoteModel
+from .quote_model import QuoteModel
 import docx
 
 class DocxImporter(IngestorInterface):

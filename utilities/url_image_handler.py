@@ -1,9 +1,9 @@
 from PIL import Image
 import shutil
-import urllib3
-import random
 import os
 import requests
+from .file_helper import FileHelper
+import mimetypes
 
 class URLImageHandler:
     dir = './tmp_url_images'
@@ -11,24 +11,23 @@ class URLImageHandler:
     @classmethod
     def save_file(cls,url):
 
-
-
         try:
             img = Image.open(requests.get(url, stream=True).raw)
         except:
             return Exception()
-        # make this a utility
-        rand_numb = random.randint(0,1000000)
+
+        rand_numb = FileHelper.return_random_file_name()
 
         try:
             os.mkdir(cls.dir)
         except:
             print("Directory already exists")
 
-        file_split = url.split('.')
-        ext = file_split[-1]
+        response = requests.get(url)
+        content_type = response.headers['content-type']
+        ext = mimetypes.guess_extension(content_type)
         file_path = f"{cls.dir}/{rand_numb}.{ext}"
-        
+
         img.save(file_path)
         return file_path
 
