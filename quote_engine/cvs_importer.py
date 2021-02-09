@@ -2,11 +2,14 @@ from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
 import pandas
 
+
 class CSVImporter(IngestorInterface):
     allowed_extensions = ['csv']
 
     @classmethod
     def parse(cls, path):
+        """ Parses text from file, returns quote models """
+
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
@@ -14,6 +17,6 @@ class CSVImporter(IngestorInterface):
         quote_models = []
 
         for _, row in df.iterrows():
-            quote_models.append(QuoteModel(row['body'],row['author']))
+            quote_models.append(QuoteModel(row['body'], row['author']))
 
         return quote_models

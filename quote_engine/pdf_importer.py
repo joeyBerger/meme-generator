@@ -4,6 +4,7 @@ import subprocess
 import os
 import random
 
+
 class PDFImporter(IngestorInterface):
     allowed_extensions = ['pdf']
 
@@ -28,7 +29,7 @@ class PDFImporter(IngestorInterface):
                         body = parsed[i]
                         i += 1
                         author = parsed[i]
-                        quote_models.append(QuoteModel(body,author))
+                        quote_models.append(QuoteModel(body, author))
                     i += 1
 
         file_ref.close()

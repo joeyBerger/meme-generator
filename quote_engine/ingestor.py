@@ -3,11 +3,14 @@ from .txt_importer import TxtImporter
 from .cvs_importer import CSVImporter
 from .pdf_importer import PDFImporter
 
+
 class Ingestor():
-    ingestors = [DocxImporter,TxtImporter,CSVImporter,PDFImporter]
-        
+    ingestors = [DocxImporter, TxtImporter, CSVImporter, PDFImporter]
+
     @classmethod
     def parse(cls, path):
+        """ Try parsing file with given path"""
+
         for ingestor in cls.ingestors:
             if ingestor.can_ingest(path):
                 return ingestor.parse(path)

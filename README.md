@@ -14,7 +14,6 @@ This python application demonstrates the following toolsets:
 * Modules and use of external libraries
 * Reading of various file types for extraction of data
 * GET and POST requests using Flask
-* 
 
 ### Interacting with the command line
 

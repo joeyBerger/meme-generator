@@ -5,6 +5,7 @@ from quote_engine.ingestor import Ingestor
 from meme_engine import MemeEngine
 from quote_engine.quote_model import QuoteModel
 
+
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given an path and a quote """
     img = None
