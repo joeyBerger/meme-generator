@@ -4,21 +4,24 @@ import subprocess
 import os
 import random
 
-
 class PDFImporter(IngestorInterface):
     allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path):
+        """ Parses text from file, returns quote models """
+
         if not cls.can_ingest(path):
             raise Exception('Cannot Ingest Exception')
 
+        """ create new temp text file for storage of PDF text"""
         tmp = f'./{random.randint(0,1000000)}.txt'
         subprocess.call(['pdftotext', path, tmp])
 
         file_ref = open(tmp, "r")
         quote_models = []
 
+        """ parse text to quote model """
         for line in file_ref.readlines():
             line = line.strip('\n\r').strip()
             if len(line) > 0:
@@ -29,7 +32,7 @@ class PDFImporter(IngestorInterface):
                         body = parsed[i]
                         i += 1
                         author = parsed[i]
-                        quote_models.append(QuoteModel(body, author))
+                        quote_models.append(QuoteModel(body,author))
                     i += 1
 
         file_ref.close()

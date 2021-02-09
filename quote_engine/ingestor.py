@@ -1,15 +1,14 @@
-from .docx_importer import DocxImporter
-from .txt_importer import TxtImporter
-from .cvs_importer import CSVImporter
-from .pdf_importer import PDFImporter
-
+from .docx_ingestor import DocxImporter
+from .txt_ingestor import TxtImporter
+from .cvs_ingestor import CSVImporter
+from .pdf_ingestor import PDFImporter
 
 class Ingestor():
-    ingestors = [DocxImporter, TxtImporter, CSVImporter, PDFImporter]
-
+    ingestors = [DocxImporter,TxtImporter,CSVImporter,PDFImporter]
+        
     @classmethod
     def parse(cls, path):
-        """ Try parsing file with given path"""
+        """ Tries parsing file with given path"""
 
         for ingestor in cls.ingestors:
             if ingestor.can_ingest(path):
