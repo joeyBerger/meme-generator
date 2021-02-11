@@ -3,9 +3,10 @@ from .txt_ingestor import TxtImporter
 from .csv_ingestor import CSVImporter
 from .pdf_ingestor import PDFImporter
 
+
 class Ingestor():
-    ingestors = [DocxImporter,TxtImporter,CSVImporter,PDFImporter]
-        
+    ingestors = [DocxImporter, TxtImporter, CSVImporter, PDFImporter]
+
     @classmethod
     def parse(cls, path):
         """ Tries parsing file with given path"""

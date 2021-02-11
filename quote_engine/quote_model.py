@@ -14,7 +14,7 @@ class QuoteModel():
 
     def __repr__(self):
         """  Returns object representation """
-        
+
         return f'QuoteModel(body={self.body}, author={self.author})'
 
     @classmethod

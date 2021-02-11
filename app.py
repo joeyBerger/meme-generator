@@ -3,8 +3,8 @@ import os
 from flask import Flask, render_template, abort, request
 
 from quote_engine.ingestor import Ingestor
-from utilities.MemeGenerator import MemeGenerator
-from utilities.url_image_handler import URLImageHandler
+from MemeGenerator.MemeGenerator import MemeGenerator
+from MemeGenerator.url_image_handler import URLImageHandler
 
 app = Flask(__name__)
 

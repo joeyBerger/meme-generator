@@ -2,7 +2,7 @@ import os
 import random
 import argparse
 from quote_engine.ingestor import Ingestor
-from utilities.MemeGenerator import MemeGenerator
+from MemeGenerator.MemeGenerator import MemeGenerator
 from quote_engine.quote_model import QuoteModel
 
 

@@ -1,4 +1,4 @@
-from utilities.file_helper import FileHelper
+from MemeGenerator.file_helper import FileHelper
 from PIL import Image, ImageDraw, ImageFont
 import os
 import shutil
