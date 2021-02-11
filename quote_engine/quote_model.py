@@ -12,6 +12,11 @@ class QuoteModel():
 
         return f"{self.body} by {self.author}"
 
+    def __repr__(self):
+        """  Returns object representation """
+        
+        return f'QuoteModel(body={self.body}, author={self.author})'
+
     @classmethod
     def format_body(cls, body):
         """ Removes extraneous characters from body """

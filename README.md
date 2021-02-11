@@ -48,7 +48,7 @@ Uses Flask framework to serve html, and receive requests.
 ### main.py
 Generates meme locally based on user defined parameters.
 
-### meme_engine.py
+### MemeGenerator.py
 Generates meme based on supplied image, body and author.
 
 ### quote_model
@@ -60,8 +60,8 @@ Given a path, searches available ingestors based on given path file extension.
 ### ingestor_interface.py
 Abstact method to be realized by various file type ingestors.
 
-### cvs_ingestor.py
-Ingests .cvs filetypes and exports found QuoteModel instances.
+### csv_ingestor.py
+Ingests .csv filetypes and exports found QuoteModel instances.
 
 ### docx_ingestor.py
 Ingests .docx filetypes and exports found QuoteModel instances.

@@ -4,7 +4,7 @@ import os
 import shutil
 
 
-class MemeEngine:
+class MemeGenerator:
     """ Set instance attributes """
 
     def __init__(self, output_dir):

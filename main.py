@@ -2,7 +2,7 @@ import os
 import random
 import argparse
 from quote_engine.ingestor import Ingestor
-from meme_engine import MemeEngine
+from utilities.MemeGenerator import MemeGenerator
 from quote_engine.quote_model import QuoteModel
 
 
@@ -36,7 +36,7 @@ def generate_meme(path=None, body=None, author=None):
             raise Exception('Author Required if Body is Used')
         quote = QuoteModel(body, author)
 
-    meme = MemeEngine('./tmp')
+    meme = MemeGenerator('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
 
     return path

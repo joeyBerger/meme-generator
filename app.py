@@ -3,12 +3,12 @@ import os
 from flask import Flask, render_template, abort, request
 
 from quote_engine.ingestor import Ingestor
-from meme_engine import MemeEngine
+from utilities.MemeGenerator import MemeGenerator
 from utilities.url_image_handler import URLImageHandler
 
 app = Flask(__name__)
 
-meme = MemeEngine('./static')
+meme = MemeGenerator('./static')
 
 
 def setup():
